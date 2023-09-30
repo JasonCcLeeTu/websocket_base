@@ -28,7 +28,7 @@ func WsPing(c *gin.Context) {
 			break
 		}
 
-		mt, message, err := ws.ReadMessage()
+		mt, message, err := ws.ReadMessage() //接收client端資料
 		if err != nil {
 			break
 		}
@@ -48,7 +48,7 @@ func WsPing(c *gin.Context) {
 
 		}
 
-		if err := ws.WriteMessage(websocket.TextMessage, []byte(fmt.Sprintf("got it : time: %s", string(message)))); err != nil {
+		if err := ws.WriteMessage(websocket.TextMessage, []byte(fmt.Sprintf("got it : time: %s", string(message)))); err != nil { //傳輸資料到client
 			log.Println("WriteMessage error")
 			break
 		}
